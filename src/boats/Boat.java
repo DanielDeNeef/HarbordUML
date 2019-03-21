@@ -39,4 +39,12 @@ public abstract class Boat implements Floatable {
         return count;
     }
 
+    @Override
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed=speed;
+    }
 }
