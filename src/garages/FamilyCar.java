@@ -34,13 +34,15 @@ public class FamilyCar extends Car {
     }
     @Override
     public void setSpeed(double speed) {
-        super.setSpeed(speed);
+        super.setSpeed(getSpeed()+speed);
     }
     @Override
     public void accelerate(double value) {
+        setSpeed(value);
     }
     @Override
     public void slowDown(double value) {
+        setSpeed(-value);
     }
     @Override
     public void rePaint(Colors colors) {
