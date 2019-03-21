@@ -25,12 +25,16 @@ public class Garage {
         }
     }
 
-    private boolean isVehiclePresent(MoveAble vehicle)throws VehicleAlreadyInGarageException{
+    private boolean isVehiclePresent(MoveAble vehicle)throws VehicleAlreadyInGarageException,NullPointerException{
         boolean test=false;
             for (MoveAble x : vehicles) {
-                if (x.equals(vehicle)) {
-                    test = true;
-                    throw new VehicleAlreadyInGarageException("wagen staat al in de garage");
+                try {
+                    if (x.equals(vehicle)) {
+                        test = true;
+                        throw new VehicleAlreadyInGarageException("wagen staat al in de garage");
+                    }
+                }catch (NullPointerException npe){
+
                 }
             }
 
@@ -40,8 +44,11 @@ public class Garage {
     private int nextFreePosiiton(){
         int index = -1;
         for (int x =0;x<vehicles.length;x++){
-            if (vehicles[x].equals(null)){
-                index=x;
+            try {
+                if (vehicles[x].equals(null)) {
+                }
+            }catch (NullPointerException npe){
+                return x;
             }
         }
         return index;
@@ -73,8 +80,16 @@ public class Garage {
 
     public void printGarage(){
         for (MoveAble x : vehicles){
-            System.out.print("|"+x+"| ");
+           try {
+               if (x.equals(null)) {
+               } else {
+                   System.out.print("|" + x + "| ");
+               }
+           }catch (NullPointerException npe){
+               System.out.print("|    | ");
+           }
         }
+        System.out.println();
     }
 
 }

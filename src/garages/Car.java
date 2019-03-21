@@ -50,4 +50,9 @@ public abstract class Car implements Paintable, MoveAble {
     public int getChassisID() {
         return chassisID;
     }
+
+    @Override
+    public String toString() {
+        return getColors().toString();
+    }
 }
